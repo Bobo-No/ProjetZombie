@@ -1,0 +1,12 @@
+{
+  "name": "zombieproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Zombie.js",
+  "scripts": {
+
+  },
+  "author": "Clement Bonnaud",
+  "license": "ISC",
+  "type": "module"
+}
