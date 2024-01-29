@@ -9,6 +9,7 @@ export function vaccineAllWith(peoples, vaccin) {
     return peoplesUpdated;
 }
 
+
 export function vaccinedA1(people) {
     let peopleUpdated = {...people};
     if (peopleUpdated.age <= 30 && peopleUpdated.status !== "Dead") {

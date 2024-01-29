@@ -1,4 +1,31 @@
 
+export class People{
+    name;
+    age;
+    status="Clean";
+    isSeed=false;
+    imune=[];
+    friends=[];
+    type=null;
+    constructor(name,age,virus){
+        this.name=name;
+        this.age=age;
+        if(virus){
+            this.type=virus;
+            this.isSeed=true;
+            this.status="Infected";
+        }
+    }
+
+    addFriend(friend){
+        let updatedVersion={...this,addFriend:this.addFriend};
+        updatedVersion.friends.push(friend);
+        return  updatedVersion;
+    }
+}
+
+
+
 const names = ["Jerome",
     "Philippe",
     "Louis",

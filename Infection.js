@@ -64,7 +64,7 @@ function infectChilds(infectioning,parent, group,type,friendStatus,conditionOnIn
     }
     let aFriendsIsInfected = groupUpdated.filter(people => friendStatus(people)).length > 0;
     if (aFriendsIsInfected) {
-        if (conditionOnInfection(parentUpdated)) {
+        if (conditionOnInfection==null||conditionOnInfection(parentUpdated)) {
             parentUpdated = infectPeople(parentUpdated, type);
         }
     }
@@ -76,7 +76,7 @@ function infectParents(infectioning,parent, group,type,parentStatus,conditionOnI
     let parentIsInfected = parentStatus(parentUpdated);
     if (parentIsInfected && groupUpdated) {
         for (let i = 0; i < groupUpdated.length; i++) {
-            if (conditionOnInfection(groupUpdated[i])) {
+            if (conditionOnInfection==null||conditionOnInfection(groupUpdated[i])) {
                 groupUpdated[i] = infectPeople(groupUpdated[i], type);
             }
             groupUpdated[i].friends = infectioning(groupUpdated[i], groupUpdated[i].friends)[1];
@@ -128,8 +128,8 @@ function infectOnlyTheLast(infectioning,parent, group,type,onlyLastStatus){
 
 export function pandemieAccumulator(peoples, infections) {
     let precedentResult = [...peoples];
-    for (const element of infections) {
-        precedentResult = element(null, precedentResult)[1];
+    for (const infection of infections) {
+        precedentResult = infection(null, precedentResult)[1];
     }
     return precedentResult;
 }
